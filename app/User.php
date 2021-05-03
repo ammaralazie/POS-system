@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password','image',
     ];
 
     /**
@@ -47,4 +47,7 @@ class User extends Authenticatable
     {
         return ucfirst($value);
     } //end get last name
+    public function getImageAttribute($value){
+        return asset('media/users_image/'.$value);
+    }//end of geyt image
 }

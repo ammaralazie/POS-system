@@ -23,7 +23,7 @@
             </div>
         </div><!-- / box primary -->
         @include('partials._errors')
-        <form action="{{route('dashbord.users.store')}}" method="post">
+        <form action="{{route('dashbord.users.store')}}" method="post" enctype="multipart/form-data"        >
             {{ csrf_field() }}
             {{method_field('post')}}
             <div class="form-group">
@@ -37,6 +37,10 @@
             <div class="form-group">
                 <label for="">@lang('site.email')</label>
                 <input type="email" name="email" id="" class="form-control" value="{{old('email')}}" >
+            </div>
+            <div class="form-group">
+                <label for="">@lang('site.image')</label>
+                <input type="file" name="image" id="" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="">@lang('site.password')</label>
