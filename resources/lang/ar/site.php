@@ -1,7 +1,7 @@
 <?php
 return[
     'dashboard'=>'الرئيسية',
-    'site.no_data_found'=>'للاسف لاتوجد بيانات',
+    'no_data_found'=>'للاسف لاتوجد بيانات',
     'edit'=>'تعديل',
     'add'=>'اضافة',
     'delete'=>'حذف',
@@ -11,6 +11,11 @@ return[
     'added_successfly'=>'تم أضافة البيانات بنجاح',
     'updated_successfly'=>'تم تعديل البيانات بنجاح',
     'deleted_successfly'=>'تم حذف البيانات بنجاح',
+    'yes'=>'نعم',
+    'no'=>'كلا',
+    'confirm_delete'=>'تاكيد الحذف',
+
+
 
     'users'=>'المشرفين',
     'first_name'=>'الاسم الاول',
@@ -21,7 +26,8 @@ return[
     'update'=>'تحديث',
     'read'=>'قرأة',
     'create'=>'أنشاء',
-    'permissions'=>'الاصلاحيات'
+    'permissions'=>'الاصلاحيات',
+    'logout'=>'تسجيل الخروج',
 
 
 

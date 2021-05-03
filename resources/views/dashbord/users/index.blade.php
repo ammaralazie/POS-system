@@ -20,25 +20,25 @@
 
             <div class="box-header with-border">
 
-                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.users') <small>{{--$users->total() --}}</small></h3>
+                <h3 class="box-title" style="margin-bottom: 15px">@lang('site.users') <small>{{$users->total()}}</small></h3>
 
                 <form action="{{ route('dashbord.users.index') }}" method="get">
 
                     <div class="row">
 
                         <div class="col-md-4">
-                            <input type="text" name="search" class="form-control" placeholder="@lang('site.search')" value="{{-- request()->search --}}">
+                            <input type="text" name="search" class="form-control" placeholder="@lang('site.search')" value="{{request()->search}}">
                         </div>
 
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('site.search')</button>
-                            <a href="{{route('dashbord.users.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</a>
-                            {{--  @if (auth()->user()->hasPermission('create_users'))
-                                <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</a>
+
+                             @if (auth()->user()->hasPermission('create_users'))
+                                 <a href="{{route('dashbord.users.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</a>
                             @else
-                                <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('site.add')</a>
+                                 <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('site.add')</a>
                             @endif
-                            --}}
+
                         </div>
 
                     </div>
@@ -68,12 +68,21 @@
                         <th>{{$user->last_name}}</th>
                         <th>{{$user->email}}</th>
                         <th>none</th>
-                        <th><a class="btn btn-info btn-sm" href="{{route('dashbord.users.edit',['id'=>$user->id])}}">@lang('site.edit')</a>
-                        <form action="{{route('dashbord.users.destroy',['id'=>$user->id])}}" method="post"  style="display: inline">
-                            {{ csrf_field() }}
-                            {{method_field('delete')}}
-                            <button class="btn btn-danger btn-sm">@lang('site.delete')</button>
-                        </form>
+                        @if (Auth()->user()->hasPermission('delete_users'))
+                                <th><a class="btn btn-info btn-sm" href="{{route('dashbord.users.edit',['id'=>$user->id])}}">@lang('site.edit')</a>
+                        @else
+                                <th><a class="btn btn-info btn-sm disabled" href="#">@lang('site.edit')</a>
+                        @endif
+
+                            @if (Auth()->user()->hasPermission('delete_users'))
+                                <form action="{{route('dashbord.users.destroy',['id'=>$user->id])}}" method="post"  style="display: inline">
+                                    {{ csrf_field() }}
+                                    {{method_field('delete')}}
+                                    <button class="btn btn-primary btn-sm delete" style="background: rgb(199, 67, 67)">@lang('site.delete')</button>
+                                </form>
+                            @else
+                            <button class="btn btn-danger btn-sm disabled" style="background: rgb(199, 67, 67)">@lang('site.delete')</button>
+                            @endif
                     </th>
                 </tr>
                         @endforeach
@@ -83,7 +92,7 @@
 
                     </table><!-- end of table -->
 
-                    {{-- $users->appends(request()->query())->links() --}}
+                   {{$users->appends(request()->query())->links()}}
 
                 @else
 
@@ -99,6 +108,5 @@
     </section><!-- end of content -->
 
 </div><!-- end of content wrapper -->
-
 
 @endsection

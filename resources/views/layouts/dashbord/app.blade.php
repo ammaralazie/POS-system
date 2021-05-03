@@ -190,7 +190,7 @@
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dashboard_files/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{{-- auth()->user()->first_name }} {{ auth()->user()->last_name --}}</span>
+                            <span class="hidden-xs">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</span>
                         </a>
                         <ul class="dropdown-menu">
 
@@ -199,7 +199,7 @@
                                 <img src="{{ asset('dashboard_files/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                                 <p>
-                                    {{-- auth()->user()->first_name }} {{ auth()->user()->last_name--}}
+                                    {{ auth()->user()->first_name }} {{ auth()->user()->last_name}}
                                     <small>Member since 2 days</small>
                                 </p>
                             </li>
@@ -213,6 +213,7 @@
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
+                                    <button type="submit" class="btn btn-danger">@lang('site.logout')</button>
                                 </form>
 
                             </li>
@@ -235,7 +236,7 @@
             <b>Version</b> 2.4.0
         </div>
         <strong>Copyright &copy; 2014-2016
-            <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            <a href="https://adminlte.io">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</a>.</strong> All rights
         reserved.
     </footer>
 
