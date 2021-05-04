@@ -14,6 +14,7 @@ return[
     'yes'=>'نعم',
     'no'=>'كلا',
     'confirm_delete'=>'تاكيد الحذف',
+    'image'=>'صورة',
 
 
 

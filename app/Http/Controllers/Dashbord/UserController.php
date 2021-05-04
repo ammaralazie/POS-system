@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashbord;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
@@ -14,8 +15,8 @@ class UserController extends Controller
     {
         $this->middleware(['permission:read_users'])->only(['index']);
         $this->middleware(['permission:create_users'])->only(['create']);
-        $this->middleware(['permission:update_users'])->only(['update']);
-        $this->middleware(['permission:edit_users'])->only(['edit']);
+        $this->middleware(['permission:update_users'])->only(['edit']);
+        //$this->middleware(['permission:edit_users'])->only(['edit']);
         $this->middleware(['permission:delete_users'])->only(['destroy']);
     } //end of constructer
 
@@ -39,8 +40,10 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|confirmed',
+            'permissions'=>'required|min:1',
+            'image'=>'image',
         ]);
         $request_data = $request->except(['password', 'permissions', 'password_confirmation', 'image']);
         $request_data['password'] = bcrypt($request->password);
@@ -76,9 +79,23 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => ['required',Rule::unique('users')->ignore($user->id),],
+            'permissions'=>'required|min:1',
+            'image'=>'image',
         ]);
-        $request_data = $request->except(['permissions']);
+        $request_data = $request->except(['permissions','image']);
+        if($user->image){
+
+            if ($user->image !='default.png') {
+                Storage::disk('public_file')->delete( '\users_image\.$user->image');
+            } //end if
+            $img = Image::make($request->image);
+            $img->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('media\users_image\ '.$request->image->hashName()));
+            $request_data['image']=' '.$request->image->hashName();
+
+        }//end of if
 
 
         $user->update($request_data);
