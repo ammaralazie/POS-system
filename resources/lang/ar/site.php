@@ -15,6 +15,8 @@ return[
     'no'=>'كلا',
     'confirm_delete'=>'تاكيد الحذف',
     'image'=>'صورة',
+    'categories'=>'الاقسام',
+    'name'=>'الاسم',
 
 
 

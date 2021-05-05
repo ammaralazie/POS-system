@@ -10,7 +10,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
            return view('dashbord.index');
        })->name('index');//end rout check
 
+
+       //route user
         Route::resource('users','UserController')->except(['show']);
+
+        //route categories
+        Route::resource('categories','CategoryController')->except(['show']);
 
     });
 
