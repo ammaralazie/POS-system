@@ -157,5 +157,15 @@ return [
         'title'                 => 'العنوان',
         'username'              => 'اسم المُستخدم',
         'year'                  => 'السنة',
+        'image'=>'صورة',
+        'discription_ar'=>'الوصف بالعربي',
+        'discription_en'=>'الوصف بالنكليزي',
+        'name_ar'=>'الاسم بالعربي',
+        'name_en'=>'الاسم بالنكليزي',
+        'parchase_price'=>'سعر الشراء',
+        'sale_price'=>'سعر البيع',
+        'stok'=>'المخزن',
+        'category_id'=>'الفئة',
     ],
+
 ];

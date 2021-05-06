@@ -17,6 +17,24 @@ return[
     'image'=>'صورة',
     'categories'=>'الاقسام',
     'name'=>'الاسم',
+    'namee'=>[
+        'ar'=>'الاسم-ar',
+        'en'=>'الاسم-en'
+    ],
+    'discriptionn'=>'الوصف',
+    'stoke'=>'المخزن',
+    'sale_price'=>'سعر البيع',
+    'purchase_price'=>'سعر الشراء',
+    'discription'=>[
+        'ar'=>'الوصف-ar',
+        'en'=>'الوصف-en'
+    ],
+    'price'=>[
+        'stok'=>'المخزن',
+        'sale_price'=>'سعر البيع',
+        'parchase_price'=>'سعر الشراء'
+    ],
+    'products'=>'المنتجات',
 
 
 
