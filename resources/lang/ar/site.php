@@ -35,6 +35,7 @@ return[
         'parchase_price'=>'سعر الشراء'
     ],
     'products'=>'المنتجات',
+    'profit'=>'الربح',
 
 
 

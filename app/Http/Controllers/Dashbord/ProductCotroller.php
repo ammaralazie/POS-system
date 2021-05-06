@@ -50,6 +50,7 @@ class ProductCotroller extends Controller
         $request_data['image']=$request->image->hashName();
         //dd( $request_data);
         $proudct=Product::create($request_data);
+        session()->flash('success', __('site.added_successfly'));
         return redirect()->route('dashbord.products.index');
     }
 

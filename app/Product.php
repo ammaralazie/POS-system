@@ -20,6 +20,10 @@ class Product extends Model
 
     ]; //end of fillable
 
+    protected $appends=[
+        'porfet_percent'
+    ];//end of appends
+
     public function category()
     {
         return $this->belongsTo('App\Category');
@@ -28,4 +32,9 @@ class Product extends Model
     public function getImageAttribute($value){
         return asset('media/products_image/'.$value);
     }//end of get image
+
+    public function getPorfetPercentAttribute(){
+        $res=(($this->parchase_price - $this->sale_price)*100)/120;
+        return $res;
+    }
 }

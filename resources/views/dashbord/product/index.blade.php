@@ -66,6 +66,7 @@
                                     <th>@lang('site.discriptionn')</th>
                                     <th>@lang('site.sale_price')</th>
                                     <th>@lang('site.purchase_price')</th>
+                                    <th>@lang('site.profit')</th>
                                     <th>@lang('site.image')</th>
                                     <th>@lang('site.stoke')</th>
 
@@ -86,6 +87,7 @@
                                         @endif
                                         <th>{{ $product->sale_price }}</th>
                                         <th>{{ $product->parchase_price }}</th>
+                                        <th>{{ $product->porfet_percent}}</th>
                                         <th><img src="{{$product->image}}" alt="" style="width: 80px;height:80px;border-radius: 53px;"></th>
                                         <th>{{ $product->stok }}</th>
                                         @if (Auth()->user()->hasPermission('delete_products'))
