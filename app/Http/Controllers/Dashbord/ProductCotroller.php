@@ -55,8 +55,9 @@ class ProductCotroller extends Controller
                 $constraint->aspectRatio();
             });
             $img->save(public_path('media/products_image/'.$request->image->hashName()));
+            $request_data['image']=$request->image->hashName();
         }//end if image
-        $request_data['image']=$request->image->hashName();
+
         //dd( $request_data);
         $proudct=Product::create($request_data);
         session()->flash('success', __('site.added_successfly'));
@@ -106,6 +107,10 @@ class ProductCotroller extends Controller
 
     public function destroy(Product $product)
     {
-        //
+        if($product->image !='default.png'){
+            Storage::disk('public_file')->delete('/products_image/'.$product->image);
+        }//end of if
+        $product->delete();
+        return redirect()->back();
     }
 }
