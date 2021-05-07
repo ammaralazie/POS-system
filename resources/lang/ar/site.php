@@ -36,6 +36,8 @@ return[
     ],
     'products'=>'المنتجات',
     'profit'=>'الربح',
+    'related_products'=>'المنتجات المرتبطة ',
+    'all_department'=>'كل القسام',
 
 
 

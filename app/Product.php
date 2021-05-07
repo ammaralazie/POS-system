@@ -34,7 +34,10 @@ class Product extends Model
     }//end of get image
 
     public function getPorfetPercentAttribute(){
-        $res=(($this->parchase_price - $this->sale_price)*100)/120;
+        $res=(( $this->sale_price-$this->parchase_price)*100)/120;
+        if ($res<0){
+            $res=0;
+        }
         return $res;
     }
 }

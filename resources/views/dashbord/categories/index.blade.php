@@ -63,12 +63,14 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('site.name')</th>
+                                    <th>@lang('site.related_products')</th>
 
                                 </tr>
                                 @foreach ($categories as $index => $category)
                                     <tr>
                                         <th>{{ $index + 1 }}</th>
                                         <th>{{ $category->name }}</th>
+                                        <th><a href="{{route('dashbord.products.index',['category_id'=>$category->id])}}" >{{ $category->product->count()}} @if($category->product->count()== 1)منتج @else منتجات @endif </a></th>
                                         @if (Auth()->user()->hasPermission('delete_categories'))
                                             <th><a class="btn btn-info btn-sm"
                                                     href="{{ route('dashbord.categories.edit', ['id' => $category->id]) }}">@lang('site.edit')</a>

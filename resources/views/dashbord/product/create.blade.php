@@ -33,13 +33,13 @@
                     <select class="form-control" name='category_id'>
                         <option value="" selected>....</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"  {{old('category_id')== $category->id ? 'selected':''}}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>
                 @php
                     $languages = ['ar', 'en'];
-                   // $discriptions = ['ar', 'en'];
+                    // $discriptions = ['ar', 'en'];
                     $prices = ['parchase_price', 'sale_price', 'stok'];
                 @endphp
                 @foreach ($languages as $language)
@@ -60,25 +60,26 @@
                         @else
                             <label for="">@lang('site.discription.en')</label>
                         @endif
-                        <textarea type="text" name="discription_{{ $language }}" style="height: 80px;overflow:hidden;resize:vertical" id="" class="form-control ckeditor">
-                                {{ old('discription_' . $language) }}
-                            </textarea>
+                        <textarea type="text" name="discription_{{ $language }}"
+                            style="height: 80px;overflow:hidden;resize:vertical" id="" class="form-control ckeditor">
+                                    {{ old('discription_' . $language) }}
+                                </textarea>
                     </div>
                 @endforeach
                 <div class="form-group">
                     <label for="">@lang('site.image')</label>
-                    <input type="file" name="image" id="" class="form-control" >
+                    <input type="file" name="image" id="" class="form-control">
                 </div>
                 @foreach ($prices as $price)
                     <div class="form-group">
-                        @if ($price =='sale_price')
+                        @if ($price == 'sale_price')
                             <label for="">@lang('site.price.sale_price')</label>
                         @elseif ($price =='stok')
                             <label for="">@lang('site.price.stok')</label>
                         @else
                             <label for="">@lang('site.price.parchase_price')</label>
                         @endif
-                        <input type="number" name="{{$price}}" id="" class="form-control"
+                        <input type="number" name="{{ $price }}" id="" class="form-control"
                             value="{{ old($price) }}">
                     </div>
                 @endforeach

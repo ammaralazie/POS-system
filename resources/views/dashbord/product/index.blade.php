@@ -35,6 +35,12 @@
                             </div>
 
                             <div class="col-md-4">
+                                <select name="category_id" id="" style="width: 40%">
+                                    <option value="">@lang('site.all_department')</option>
+                                    @foreach ($categoties as $category)
+                                        <option value="{{$category->id}}" {{$category->id ==request()->category_id? 'selected':''}}>{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>
                                     @lang('site.search')</button>
 
