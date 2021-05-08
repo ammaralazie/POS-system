@@ -40,6 +40,12 @@ return[
     'all_department'=>'كل القسام',
 
 
+    'clients'=>'العملاء',
+    'phone'=>'رقم الهاتف',
+    'address'=>'العنوان',
+
+
+
 
     'users'=>'المشرفين',
     'first_name'=>'الاسم الاول',

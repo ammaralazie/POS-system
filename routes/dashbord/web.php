@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Dashbord\UserController;
 use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
@@ -19,6 +18,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         //route products
         Route::resource('products','ProductCotroller')->except(['show']);
+
+        //route clintes
+        Route::resource('clients','ClientController')->except(['show']);
 
     });
 
