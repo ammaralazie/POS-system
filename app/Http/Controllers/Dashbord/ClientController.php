@@ -9,9 +9,11 @@ use App\Http\Controllers\Controller;
 class ClientController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::paginate(5);
+        $clients = Client::when($request->search,function ($q) use($request){
+            $q->where('name','like','%'.$request->search.'%');
+        })->latest()->paginate(5);
         return view('dashbord.clients.index')->with('clients', $clients);
     } //end of index
 
@@ -36,24 +38,30 @@ class ClientController extends Controller
     } //end of store
 
 
-    public function show(Client $client)
-    {
-
-    }
 
     public function edit(Client $client)
     {
-        //
-    }
+        return view('dashbord.clients.edit',compact('client'));
+    }//end of edit
 
 
     public function update(Request $request, Client $client)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|array|min:1',
+            'phone.0' => 'required',
+            'address' => 'required',
+        ]);
+        $client->update($request->all());
+        session()->flash('success',__('site.updated_successfly'));
+        return redirect()->route('dashbord.clients.index');
     }
 
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        session()->flash('success',__('site.deleted_successfly'));
+        return redirect()->route('dashbord.clients.index');
     }
 }
