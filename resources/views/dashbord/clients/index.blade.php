@@ -65,6 +65,7 @@
                                     <th>@lang('site.name')</th>
                                     <th>@lang('site.phone')</th>
                                     <th>@lang('site.address')</th>
+                                    <th>@lang('site.orders')</th>
                                     <th>@lang('site.action')</th>
 
                                 </tr>
@@ -83,6 +84,11 @@
                                             @endforeach
                                         </th>
                                         <th>{{ $client->address }}</th>
+                                        @if (auth()->user()->hasPermission('create_orders'))
+                                        <th><a href="{{route('dashbord.clients.orders.create',['id'=>$client->id])}}">@lang('site.add_order')</a></th>
+                                        @else
+                                        <th><a href="">@lang('site.add_order')</a></th>
+                                        @endif
                                         @if (Auth()->user()->hasPermission('delete_categories'))
                                             <th><a class="btn btn-info btn-sm"
                                                     href="{{ route('dashbord.clients.edit', ['id' => $client->id]) }}">@lang('site.edit')</a>

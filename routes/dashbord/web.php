@@ -16,11 +16,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         //route categories
         Route::resource('categories','CategoryController')->except(['show']);
 
-        //route products
-        Route::resource('products','ProductCotroller')->except(['show']);
-
         //route clintes
         Route::resource('clients','ClientController')->except(['show']);
+        Route::resource('clients.orders','Client\ClientController')->except(['show']);
+
+        //route products
+        Route::resource('products','ProductCotroller')->except(['show']);
 
     });
 
