@@ -39,5 +39,9 @@ class Product extends Model
             $res=0;
         }
         return $res;
+    }// end of function porfet_percent
+
+    public function order(){
+        return $this->belongsToMany(Order::class,'prduct_order');
     }
 }

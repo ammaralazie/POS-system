@@ -52,15 +52,19 @@
                                                 <table class="table table-hover">
                                                     <tr>
                                                         <th>@lang('site.name')</th>
-                                                        <th>@lang('site.stock')</th>
-                                                        <th>----</th>
+                                                        <th>@lang('site.price.stok')</th>
+                                                        <th>@lang('site.price.sale_price')</th>
                                                         <th>@lang('site.add')</th>
                                                     </tr>
 
                                                     @foreach ($category->product as $product)
                                                         <tr>
-                                                            <td>{{ $product->name }}</td>
-                                                            <td>{{ $product->stock }}</td>
+                                                            @if(app()->getLocale()=='ar')
+                                                                <td>{{ $product->name_ar }}</td>
+                                                            @else
+                                                                <td>{{ $product->name_en }}</td>
+                                                            @endif
+                                                            <td>{{ $product->stok }}</td>
                                                             <td>{{ number_format($product->sale_price, 2) }}</td>
                                                             <td>
                                                                 <a href=""
@@ -109,8 +113,7 @@
 
                     <div class="box-body">
 
-                        <form action="{{-- route('dashboard.clients.orders.store', $client->id) --}}" method="post">
-
+                        <form action="{{ route('dashbord.clients.orders.store', $client->id) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('post') }}
 
@@ -121,7 +124,7 @@
                                 <tr>
                                     <th>@lang('site.product')</th>
                                     <th>@lang('site.quantity')</th>
-                                    <th>sdbsb</th>
+                                    <th>@lang('site.price.price')</th>
                                 </tr>
                                 </thead>
 
@@ -132,7 +135,7 @@
 
                             </table><!-- end of table -->
 
-                            <h4>@lang('site.total') : <span class="total-price">0</span></h4>
+                            <h4>@lang('site.total_price') : <span class="total-price">0</span></h4>
 
                             <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i class="fa fa-plus"></i> @lang('site.add_order')</button>
 

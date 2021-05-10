@@ -50,4 +50,6 @@ class User extends Authenticatable
     public function getImageAttribute($value){
         return asset('media/users_image/'.$value);
     }//end of geyt image
+
+
 }

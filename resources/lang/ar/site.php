@@ -32,7 +32,8 @@ return[
     'price'=>[
         'stok'=>'المخزن',
         'sale_price'=>'سعر البيع',
-        'parchase_price'=>'سعر الشراء'
+        'parchase_price'=>'سعر الشراء',
+        'price'=>'السعر',
     ],
     'products'=>'المنتجات',
     'profit'=>'الربح',
@@ -47,7 +48,10 @@ return[
 
     'orders'=>'الطلبات',
     'add_order'=>'اضافة طلب',
-
+    'no_records'=>'لا توجد منتجات',
+    'total_price'=>'السعر الكلي ',
+    'product'=>'المنتج',
+    'quantity'=>'الكمية',
 
     'users'=>'المشرفين',
     'first_name'=>'الاسم الاول',

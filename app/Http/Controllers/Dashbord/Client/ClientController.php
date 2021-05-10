@@ -21,6 +21,8 @@ class ClientController extends Controller
 
     public function store(Client $client,Request $request){
 
+        dd($request->all());
+
     }//end of store
 
     public function edit(Client $client,Order $order){
