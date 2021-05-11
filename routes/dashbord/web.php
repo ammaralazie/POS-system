@@ -23,6 +23,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         //route products
         Route::resource('products','ProductCotroller')->except(['show']);
 
+        //route orders
+        Route::resource('orders','OrderController');
+
     });
 
 });

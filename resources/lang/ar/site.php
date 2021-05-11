@@ -52,6 +52,9 @@ return[
     'total_price'=>'السعر الكلي ',
     'product'=>'المنتج',
     'quantity'=>'الكمية',
+    'created_at'=>'تمت اضافته',
+    'show_products'=>'عرض المنتجات ',
+    'client_name'=>'اسم العميل',
 
     'users'=>'المشرفين',
     'first_name'=>'الاسم الاول',

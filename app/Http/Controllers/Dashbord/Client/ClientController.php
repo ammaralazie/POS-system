@@ -7,6 +7,7 @@ use App\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Product;
 
 class ClientController extends Controller
 {
@@ -21,7 +22,34 @@ class ClientController extends Controller
 
     public function store(Client $client,Request $request){
 
-        dd($request->all());
+        $request->validate([
+            'products'=>'required|array'
+        ]);
+
+        $order=$client->orders()->create([]);
+        $total_price=0;
+        $quna=0;
+        foreach($request->products as $index=>$product){
+            foreach($product as $quantity){
+                $order->product()->attach($index,[
+                'qunatity'=>$quantity,
+            ]);
+            $quna+=$quantity;
+            }//end insted loop
+
+            $product=Product::FindOrFail($index);
+            $total_price +=$product->sale_price*$quna;
+            $product->stok=$product->stok-$quna;
+            $product->save();
+
+        }//end of froeach
+        $order->update([
+            'total_price'=>$total_price
+        ]);
+        $order->save();
+
+       session()->flash('success',__('added_successfly'));
+       return redirect()->route('dashbord.orders');
 
     }//end of store
 
