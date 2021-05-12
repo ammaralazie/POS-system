@@ -49,7 +49,7 @@ class ClientController extends Controller
         $order->save();
 
        session()->flash('success',__('added_successfly'));
-       return redirect()->route('dashbord.orders');
+       return redirect()->route('dashbord.orders.index');
 
     }//end of store
 

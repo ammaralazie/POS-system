@@ -63,21 +63,11 @@
                                         <tr>
                                             <td>{{ $order->client->name }}</td>
                                             <td>{{ number_format($order->total_price, 2) }}</td>
-                                            {{--<td>--}}
-                                                {{--<button--}}
-                                                    {{--data-status="@lang('site.' . $order->status)"--}}
-                                                    {{--data-url="{{ route('dashboard.orders.update_status', $order->id) }}"--}}
-                                                    {{--data-method="put"--}}
-                                                    {{--data-available-status='["@lang('site.processing')", "@lang('site.finished') "]'--}}
-                                                    {{--class="order-status-btn btn {{ $order->status == 'processing' ? 'btn-warning' : 'btn-success disabled' }} btn-sm"--}}
-                                                {{-->--}}
-                                                    {{--@lang('site.' . $order->status)--}}
-                                                {{--</button>--}}
-                                            {{--</td>--}}
+
                                             <td>{{ $order->created_at->diffForHumans() }}</td>
                                             <td>
                                                 <button class="btn btn-primary btn-sm order-products"
-                                                        data-url="{{-- route('dashbord.orders.products', $order->id) --}}"
+                                                        data-url="{{ route('dashbord.orders.products', $order->id) }}"
                                                         data-method="get"
                                                 >
                                                     <i class="fa fa-list"></i>
@@ -140,6 +130,7 @@
                             </div>
 
                             <div id="order-product-list">
+
 
                             </div><!-- end of order product list -->
 

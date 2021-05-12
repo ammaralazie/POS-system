@@ -55,6 +55,9 @@ return[
     'created_at'=>'تمت اضافته',
     'show_products'=>'عرض المنتجات ',
     'client_name'=>'اسم العميل',
+    'show'=>'عرض',
+    'loading'=>'أنتظار',
+    'print'=>'طباعة',
 
     'users'=>'المشرفين',
     'first_name'=>'الاسم الاول',

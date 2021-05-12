@@ -25,6 +25,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
         //route orders
         Route::resource('orders','OrderController');
+        Route::get('orders/{order}/products','OrderController@products')->name('orders.products');
 
     });
 
