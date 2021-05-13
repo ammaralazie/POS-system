@@ -22,10 +22,10 @@ class WelcomeController extends Controller
         $users_count = User::whereRoleIs('admin')->count();
 
         $sales_data=Order::select(
-            DB::select('select * from orders')
-        );
-
-        dd($sales_data);
+            DB::raw("YEAR(created_at) as year"),
+            DB::raw("MONTH(created_at) as month"),
+            DB::raw("sum(total_price) as total_price")
+        )->groupBy('month')->get();
 
         return view('dashbord.index', compact(
 
@@ -33,7 +33,8 @@ class WelcomeController extends Controller
             'clients_count',
             'categories_count',
             'orders_count',
-            'users_count'
+            'users_count',
+            'sales_data'
         ));
     } //end of index
 }
