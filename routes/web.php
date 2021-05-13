@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('dashbord.index');
-});
+Route::get('/', 'WelcomeController@index')->name('index');
+
 
 Auth::routes(['register'=>false]);
 

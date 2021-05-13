@@ -5,10 +5,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
    Route::prefix('dashbord')->name('dashbord.')->middleware('auth')->group(function(){
 
-        Route::get('/check',function(){
-           return view('dashbord.index');
-       })->name('index');//end rout check
-
+        //main page route
+        Route::get('/', 'WelcomeController@index')->name('index');
 
        //route user
         Route::resource('users','UserController')->except(['show']);
